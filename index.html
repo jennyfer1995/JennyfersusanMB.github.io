@@ -1,36 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. M. B. Jennyfer Susan | Home</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jennyfer Susan M B - Academic Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-info h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #5a67d8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .nav-tab:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .summary-text {
+            font-size: 1.1em;
+            text-align: center;
+            color: #555;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item, .experience-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .institution {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .date, .percentage {
+            color: #777;
+            font-size: 0.95em;
+        }
+
+        .dissertation {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+        }
+
+        .courses-handled {
+            margin-top: 15px;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .course-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .publications-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .publication-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #764ba2;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .skill-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .awards-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .award-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-item:before {
+            content: '🏆';
+            font-size: 3em;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            opacity: 0.3;
+        }
+
+        .award-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .link-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .link-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .certifications-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .certification-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid #764ba2;
+            transition: all 0.3s ease;
+        }
+
+        .certification-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Dr. M. B. Jennyfer Susan</h1>
-    <p>Assistant Professor | Artificial Intelligence | Digital Forensics</p>
-    <nav>
-      <a href="index.html">About</a>
-      <a href="experience.html">Experience</a>
-      <a href="publications.html">Publications</a>
-      <a href="awards.html">Awards</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <div class="profile-image">
+                    JS
+                </div>
+                <div class="profile-info">
+                    <h1>Dr. Jennyfer Susan M B</h1>
+                    <div class="title">Assistant Professor | AI & Machine Learning Research Expert</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>jennyfersusan26@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+91-6380095068</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Coimbatore, Tamil Nadu</span>
+                </div>
+            </div>
+        </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      Aspiring Assistant Professor with a Ph.D. in Computer Science (2024) from Avinashilingam University. 
-      My research focuses on <b>Specular Reflection Removal in Smart Colposcopy Images</b> using Deep Learning 
-      for enhanced cervical cancer grading. Passionate about teaching and building innovative AI-driven solutions.
-    </p>
-  </section>
+        <nav>
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showSection('summary')">Summary</button>
+                <button class="nav-tab" onclick="showSection('education')">Education</button>
+                <button class="nav-tab" onclick="showSection('experience')">Experience</button>
+                <button class="nav-tab" onclick="showSection('publications')">Publications</button>
+                <button class="nav-tab" onclick="showSection('skills')">Skills</button>
+                <button class="nav-tab" onclick="showSection('awards')">Awards</button>
+                <button class="nav-tab" onclick="showSection('links')">Professional Links</button>
+                <button class="nav-tab" onclick="showSection('certifications')">Certifications</button>
+            </div>
+        </nav>
 
-  <footer>
-    <p>© 2025 Dr. M. B. Jennyfer Susan | Built with ❤️ on GitHub Pages</p>
-  </footer>
+        <div id="summary" class="content-section active">
+            <h2>Professional Summary</h2>
+            <p class="summary-text">
+                Aspiring assistant professor with a strong background in Artificial Intelligence, eager to inspire and educate students. 
+                Dedicated to fostering a positive learning environment and contributing to academic research and innovation. 
+                Specialized in computer vision, deep learning, and medical image processing with a focus on cervical cancer detection 
+                and smart colposcopy image analysis.
+            </p>
+        </div>
+
+        <div id="education" class="content-section">
+            <h2>Educational Qualifications</h2>
+            <div class="education-item">
+                <div class="degree-title">Ph.D. in Computer Science</div>
+                <div class="institution">Avinashilingam Institute for Home Science and Higher Education for Women</div>
+                <div class="date">Completed: August 2024</div>
+                <div class="dissertation">
+                    <strong>Dissertation:</strong> Specular Reflection Removal in Smart Colposcopy Images Using Deep Learning Model for Enhanced Grading of Cervical Cancer
+                    <br><strong>Advisor:</strong> Dr. P. Subashini
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="degree-title">M.Sc. in Computer Science</div>
+                <div class="institution">Kovai Kalaimagal College of Arts and Science, Coimbatore</div>
+                <div class="date">April 2018</div>
+                <div class="percentage">Percentage: 86.3% | Class: First Class with Distinction</div>
+            </div>
+            <div class="education-item">
+                <div class="degree-title">B.Sc. in Computer Science</div>
+                <div class="institution">Kovai Kalaimagal College of Arts and Science, Coimbatore</div>
+                <div class="date">April 2016</div>
+                <div class="percentage">Percentage: 78.7% | Class: First Class with Distinction</div>
+            </div>
+        </div>
+
+        <div id="experience" class="content-section">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <div class="degree-title">Assistant Professor</div>
+                <div class="institution">Avinashilingam Institute for Home Science and Higher Education for Women, Coimbatore</div>
+                <div class="date">July 2024 – Present</div>
+                <div class="courses-handled">
+                    <strong>Courses Handled:</strong>
+                    <div class="course-list">
+                        <div class="course-item">Digital Intelligence</div>
+                        <div class="course-item">Machine Learning</div>
+                        <div class="course-item">Natural Language Processing</div>
+                        <div class="course-item">Data Science and Analytics</div>
+                        <div class="course-item">Computer Vision</div>
+                    </div>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="degree-title">Teaching Assistant</div>
+                <div class="institution">Avinashilingam Institute for Home Science and Higher Education for Women, Coimbatore</div>
+                <div class="date">July 2022 - March 2024</div>
+                <div class="courses-handled">
+                    <strong>Courses Handled:</strong>
+                    <div class="course-list">
+                        <div class="course-item">Artificial Intelligence for Home Science</div>
+                        <div class="course-item">Digital Intelligence</div>
+                        <div class="course-item">Digital Health</div>
+                        <div class="course-item">Machine Learning for Chemistry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="publications" class="content-section">
+            <h2>Publications & Research</h2>
+            <div class="publications-grid">
+                <div class="publication-category">
+                    <div class="category-title">📜 Patent Publications</div>
+                    <div class="publication-item">
+                        Subashini P., Dhivyaprabha T.T., <strong>Jennyfer Susan M.B.</strong>, "Cervical Cancer Self-Test Kit," Application No.-202241021066, May 2022.
+                    </div>
+                </div>
+
+                <div class="publication-category">
+                    <div class="category-title">📚 Book Publications</div>
+                    <div class="publication-item">
+                        Subashini P., Dhivyaprabha T.T., <strong>Jennyfer Susan M.B.</strong> (2023), "Machine Learning Using Google Colab – for Chemistry and Biochemistry Applications," Notion Press, ISBN: 9798889239963.
+                    </div>
+                </div>
+
+                <div class="publication-category">
+                    <div class="category-title">🔬 Journal Publications</div>
+                    <div class="publication-item">
+                        <strong>SCI Indexed:</strong> M.B. Jennyfer Susan, P. Subashini. (2023), "Deep Learning Inpainting Model on Digital and Medical Images – A Review," International Arab Journal of Information Technology.
+                    </div>
+                    <div class="publication-item">
+                        <strong>Scopus Indexed:</strong> M.B. Jennyfer Susan, P. Subashini. (2023), "Improvising Grading of Cervical Cancer using Quality Assessments method in Smart Colposcopy Images," Measurement Sensors.
+                    </div>
+                    <div class="publication-item">
+                        <strong>Scopus Indexed:</strong> Jennyfer Susan M.B., Subashini P., et al. (2023), "Detection of Specular Reflection from Smart Colposcopy Image using RGB Color Space and CNN," International Journal of Engineering Trends and Technology.
+                    </div>
+                </div>
+
+                <div class="publication-category">
+                    <div class="category-title">🎤 Conference Publications</div>
+                    <div class="publication-item">
+                        M.B. Jennyfer Susan, P. Subashini. (2019), "Design and Development of Webportal for Cervical cancer Diagnosis using MobileODT Images," IEEE International Smart Cities Conference (ISC2), Morocco.
+                    </div>
+                    <div class="publication-item">
+                        M.B. Jennyfer Susan, P. Subashini. (2023), "Detection of Specular Reflection on Smart Colposcopy Image Using Fine-Tuned U-Net Model," International Sustainability Conference.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="content-section">
+            <h2>Technical Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon">🔬</div>
+                    <div class="skill-title">Research Expertise</div>
+                    <p>Machine Learning Algorithms, Deep Learning Models, Computational Intelligence, Image Processing, Vision AI</p>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">💻</div>
+                    <div class="skill-title">Programming Languages</div>
+                    <p>Python, MATLAB, R, Java</p>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">🎯</div>
+                    <div class="skill-title">Specialized Areas</div>
+                    <p>Computer Vision, Medical Image Analysis, Deep Learning, Natural Language Processing</p>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">💬</div>
+                    <div class="skill-title">Communication</div>
+                    <p>Strong written and verbal communication skills, Research presentation, Academic writing</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="awards" class="content-section">
+            <h2>Awards & Recognition</h2>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <div class="award-title">Best Researcher Award</div>
+                    <p>International Research Awards on Network Protocols</p>
+                    <p>Entry ID: 1711 | Date: July 4, 2023</p>
+                </div>
+                <div class="award-item">
+                    <div class="award-title">Best Presenter Award</div>
+                    <p>"CUDA in Google Colab for Medical Images Analysis"</p>
+                    <p>Centre for Machine Learning and Intelligence | April 1, 2023</p>
+                </div>
+                <div class="award-item">
+                    <div class="award-title">Best Presenter Award</div>
+                    <p>"Image Classification using Federated Learning"</p>
+                    <p>Centre for Machine Learning and Intelligence | March 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="links" class="content-section">
+            <h2>Professional Links</h2>
+            <div class="links-grid">
+                <a href="https://www.linkedin.com/in/jennyfer-susan-m-b-24a948206" target="_blank" class="link-item">
+                    <div>🔗 LinkedIn</div>
+                    <p>Professional Network</p>
+                </a>
+                <a href="https://www.researchgate.net/profile/Jennyfer-M-B" target="_blank" class="link-item">
+                    <div>📚 ResearchGate</div>
+                    <p>Research Publications</p>
+                </a>
+                <a href="https://orcid.org/0000-0003-1509-9309" target="_blank" class="link-item">
+                    <div>🆔 ORCID</div>
+                    <p>Academic Identity</p>
+                </a>
+                <div class="link-item">
+                    <div>📊 Scopus ID</div>
+                    <p>57216788518</p>
+                </div>
+                <div class="link-item">
+                    <div>🌐 Web of Science</div>
+                    <p>IST-1886-2023</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="certifications" class="content-section">
+            <h2>Online Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <strong>Build a computer vision app with Azure Cognitive Services</strong>
+                    <br>Microsoft (Coursera) | Grade: 86.45% | March 2024
+                </div>
+                <div class="certification-item">
+                    <strong>Google Data Analytics Professional Certification</strong>
+                    <br>Google (Coursera) | September 2022
+                </div>
+                <div class="certification-item">
+                    <strong>Deep Learning with Pytorch: GAN, Project Network</strong>
+                    <br>Grade: 83.33% | August 2021
+                </div>
+                <div class="certification-item">
+                    <strong>Deep Learning with Computer Vision</strong>
+                    <br>National Research University | Grade: 93.48% | August 2021
+                </div>
+                <div class="certification-item">
+                    <strong>Migration to Google Cloud</strong>
+                    <br>Google Cloud | Grade: 87.66% | June 2021
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.education-item, .experience-item, .publication-item, .skill-category, .award-item, .certification-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
